@@ -1,0 +1,25 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vshost.*
+*.pidb
+*.log
+*.ncrunchproject
+*.svclog
+*.sap
+
+# NuGet
+packages/
+*.nupkg
+.nuget/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# VS
+.vs/
+*.sw?
