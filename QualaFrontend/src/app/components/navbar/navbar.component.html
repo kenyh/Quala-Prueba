@@ -1,0 +1,24 @@
+<nz-header class="header">
+    <div nz-row nzJustify="space-between" nzAlign="middle">
+        <div nz-col nzSpan="12">
+            <h2 class="logo">QUALAPRODUCT</h2>
+            <ul nz-menu nzMode="horizontal" class="menu">
+                <li nz-menu-item (click)="navigateTo('/productos')">
+                    <span nz-icon nzType="appstore"></span>
+                    Productos
+                </li>
+            </ul>
+            <div nz-col class="user-section" style="display: inline; align-items: center;">
+            <nz-avatar nzIcon="user" class="avatar"></nz-avatar>
+            <span class="username" style="margin-left: 8px; margin-right: 16px;">
+                {{ username }}
+            </span>
+            <button class="button" nz-button nzType="text" nzSize="small" (click)="logout()">
+                <span nz-icon nzType="logout"></span>
+                Salir
+            </button>
+        </div>
+        </div>
+
+    </div>
+</nz-header>

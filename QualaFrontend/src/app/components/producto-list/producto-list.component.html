@@ -1,0 +1,55 @@
+<nz-card nzTitle="Gestión de Productos - QUALA">
+  <div nz-row nzJustify="space-between" nzAlign="middle" class="mb-4">
+    <div nz-col>
+      <h2>Listado de Productos</h2>
+    </div>
+    <div nz-col>
+      <button nz-button nzType="primary" (click)="crearProducto()">
+        <span nz-icon nzType="plus"></span>
+        Nuevo Producto
+      </button>
+    </div>
+  </div>
+
+  <nz-spin [nzSpinning]="loading">
+    <nz-table #productosTable [nzData]="productos" nzSize="middle">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Referencia</th>
+          <th>Precio Unitario</th>
+          <th>Unidad de Medida</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productosTable.data">
+          <td>{{ producto.codigoProducto }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.referenciaInterna }}</td>
+          <td>{{ formatearPrecio(producto.precioUnitario) }}</td>
+          <td>{{ producto.unidadMedida }}</td>
+          <td>
+            <nz-tag [nzColor]="producto.estado ? 'green' : 'red'">
+              {{ formatearEstado(producto.estado) }}
+            </nz-tag>
+          </td>
+          <td>
+            <button nz-button nzType="default" nzSize="small" 
+                    (click)="editarProducto(producto.id!)" class="mr-2">
+              <span nz-icon nzType="edit"></span>
+              Editar
+            </button>
+            <button nz-button nzType="default" nzSize="small" nzDanger
+                    (click)="eliminarProducto(producto.id!)">
+              <span nz-icon nzType="delete"></span>
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</nz-card>

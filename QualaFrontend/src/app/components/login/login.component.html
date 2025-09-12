@@ -1,0 +1,42 @@
+<div class="login-container">
+  <nz-card nzTitle="Iniciar Sesión - Quala" class="login-card">
+    <form (ngSubmit)="login()" #loginForm="ngForm" nz-form>
+      <nz-form-item>
+        <nz-form-label nzSpan="24">Usuario</nz-form-label>
+        <nz-form-control nzSpan="24">
+          <input 
+            nz-input 
+            [(ngModel)]="credentials.username" 
+            name="username" 
+            placeholder="Ingrese su usuario" 
+            required
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzSpan="24">Contraseña</nz-form-label>
+        <nz-form-control nzSpan="24">
+          <input 
+            nz-input 
+            type="password" 
+            [(ngModel)]="credentials.password" 
+            name="password" 
+            placeholder="Ingrese su contraseña" 
+            required
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <button 
+        nz-button 
+        nzType="primary" 
+        [disabled]="!loginForm.form.valid" 
+        [nzLoading]="isLoading"
+        class="login-button"
+      >
+        Iniciar Sesión
+      </button>
+    </form>
+  </nz-card>
+</div>

@@ -1,0 +1,123 @@
+<nz-card [nzTitle]="isEdit ? 'Editar Producto' : 'Crear Nuevo Producto'">
+  <form (ngSubmit)="guardarProducto()" #productoForm="ngForm">
+    <div nz-row nzGutter="16">
+      <!-- Columna Izquierda -->
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired>Código de Producto</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="number" 
+                   [(ngModel)]="producto.codigoProducto" 
+                   name="codigoProducto" 
+                   placeholder="Ingrese el código"
+                   required
+                   [disabled]="loading">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Nombre</nz-form-label>
+          <nz-form-control>
+            <input nz-input 
+                   [(ngModel)]="producto.nombre" 
+                   name="nombre" 
+                   placeholder="Ingrese el nombre"
+                   required
+                   maxlength="250"
+                   [disabled]="loading">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Descripción</nz-form-label>
+          <nz-form-control>
+            <textarea nz-input 
+                      [(ngModel)]="producto.descripcion" 
+                      name="descripcion" 
+                      placeholder="Ingrese la descripción"
+                      required
+                      maxlength="250"
+                      [disabled]="loading"
+                      rows="3"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <!-- Columna Derecha -->
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label nzRequired>Referencia Interna</nz-form-label>
+          <nz-form-control>
+            <input nz-input 
+                   [(ngModel)]="producto.referenciaInterna" 
+                   name="referenciaInterna" 
+                   placeholder="Ingrese la referencia"
+                   required
+                   maxlength="100"
+                   [disabled]="loading">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Precio Unitario</nz-form-label>
+          <nz-form-control>
+            <nz-input-number 
+              [(ngModel)]="producto.precioUnitario" 
+              name="precioUnitario" 
+              [nzMin]="0"
+              [nzStep]="0.01"
+              [nzFormatter]="formatCurrency"
+              required
+              [nzDisabled]="loading"
+              style="width: 100%">
+            </nz-input-number>
+            </nz-form-control>
+        </nz-form-item>
+
+          <nz-form-item>
+          <nz-form-label nzRequired>Unidad de Medida</nz-form-label>
+          <nz-form-control>
+            <nz-select
+              [(ngModel)]="producto.unidadMedida"
+              name="unidadMedida"
+              nzPlaceholder="Seleccione la unidad"
+              required
+              [nzDisabled]="loading">
+              <nz-option
+                *ngFor="let unidad of unidadesMedida"
+                [nzValue]="unidad"
+                [nzLabel]="unidad">
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Estado</nz-form-label>
+          <nz-form-control>
+            <nz-switch
+              [(ngModel)]="producto.estado"
+              name="estado"
+              nzCheckedChildren="Activo"
+              nzUnCheckedChildren="Inactivo"
+              [nzDisabled]="loading">
+            </nz-switch>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row class="mt-4">
+      <div nz-col nzSpan="24" class="text-right">
+        <button nz-button nzType="default" (click)="cancelar()" [disabled]="loading" class="mr-2">
+          Cancelar
+        </button>
+        <button nz-button nzType="primary" 
+                [disabled]="!productoForm.form.valid" 
+                [nzLoading]="loading">
+          {{ isEdit ? 'Actualizar' : 'Crear' }} Producto
+        </button>
+      </div>
+    </div>
+  </form>
+</nz-card>

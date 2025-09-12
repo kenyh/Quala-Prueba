@@ -1,0 +1,41 @@
+.header {
+  background: #001529;
+  color: white;
+  padding: 0 24px;
+}
+
+.logo {
+  color: white;
+  margin: 0;
+  margin-right: 24px;
+  display: inline-block;
+}
+
+.menu {
+  background: transparent;
+  border: none;
+  color: white;
+  display: inline-block;
+}
+
+.menu li {
+  color: white !important;
+}
+
+.user-section {
+  text-align: right;
+}
+
+.avatar {
+  margin-right: 8px;
+  background: #1890ff;
+}
+
+.username {
+  color: white;
+  cursor: pointer;
+}
+
+.button {
+  color: white;
+}
